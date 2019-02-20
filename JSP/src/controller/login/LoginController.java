@@ -29,7 +29,6 @@ public class LoginController extends HttpServlet {
 		HttpSession session = req.getSession(true); //세션이 없으면 새로생성 있으면 이전거 불러옴
 		
 		
-		
 		String users = "abc";
 		String passwds = "123";
 		
@@ -38,12 +37,15 @@ public class LoginController extends HttpServlet {
 		
 		
 			if(users.equals(id) && passwds.equals(pw)) {
+				session.setAttribute("login", true);
 				session.setAttribute("userId", id);
 				//session.setAttribute("userPw", pw); 비밀번호는 남기면 안됨
-				req.getRequestDispatcher("/view/login/loginSuccess.jsp").forward(req, resp);
+				req.getRequestDispatcher("/view/login/loginSuccess.jsp").forward(req, resp);							
+				session.setMaxInactiveInterval(0);
+				
 				return;
 			}
-	
+			
 		req.getRequestDispatcher("/view/login/loginFail.jsp").forward(req, resp);
 		
 
