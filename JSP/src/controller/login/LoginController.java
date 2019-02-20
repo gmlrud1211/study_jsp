@@ -41,8 +41,7 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("userId", id);
 				//session.setAttribute("userPw", pw); 비밀번호는 남기면 안됨
 				req.getRequestDispatcher("/view/login/loginSuccess.jsp").forward(req, resp);							
-				session.setMaxInactiveInterval(0);
-				
+				session.setMaxInactiveInterval(0);	
 				return;
 			}
 			
