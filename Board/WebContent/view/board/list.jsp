@@ -33,8 +33,8 @@
 				<th>글 번호</th>
 				<th>글 제목</th>
 				<th>아이디</th>
-				<th>조회수</th>
-				<th>작성일</th>			
+				<th>작성일</th>
+				<th>조회수</th>			
 			</tr>
 		
 	<%	List <Board> boardList = (List) request.getAttribute("boardList");
@@ -42,7 +42,7 @@
 		for(int i=0; i<boardList.size(); i++) {  %>
 		<tr>	
 			<td><h4><%=boardList.get(i).getBoardno() %></h4></td>
-			<td><a href="/board/view?boardno=<%=boardList.get(i).getBoardno()%>"><h4><%=boardList.get(i).getTitle() %></h344></a></td>
+			<td><a href="/board/view?boardno=<%=boardList.get(i).getBoardno() %>"><h4><%=boardList.get(i).getTitle() %></h344></a></td>
 			<td><h4><%=boardList.get(i).getWriter() %></h4></td>
 			<td><h4><%=boardList.get(i).getHit() %></h4></td>
 			<td><h4><%=boardList.get(i).getWrittendate() %></h4></td>

@@ -82,7 +82,7 @@ public class BoardDaoImpl implements BoardDao {
 		
 			rs = ps.executeQuery();
 						
-			if(rs.next())
+			while(rs.next())
 			{
 				board.setBoardno(rs.getInt("boardno"));
 				board.setTitle(rs.getString("title"));
