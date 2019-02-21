@@ -8,7 +8,7 @@ public interface BoardDao {
 
 	
 	//게시글 전체 조회
-	public List SelectAll();
+	public List selectAll();
 	
 	//게시글번호로 게시글 보기
 	public Board selectBoardByBoardno(Board board);
