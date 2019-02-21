@@ -69,33 +69,29 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public Board selectBoardByBoardno(Board board) {
 		
-		//sql작성
-		String sql = "";
-		sql+="select * from board";
-		sql+=" where boardno = ?";
-		
-		//쿼리 결과저장할 list
-		List<Board> boardnoList = new ArrayList<>();
+		String sql ="";
+		sql +="select * from board";
+		sql +=" where boardno=?";
+	
+		Board result = new Board(); 
 		
 		try {
-			ps = conn.prepareStatement(sql);
-			
-			rs = ps.executeQuery();
-			
-			while(rs.next())
-			{
-				Board board1 = new Board();
-				board1.setBoardno(rs.getInt("boardno"));
-				board1.setTitle(rs.getString("title"));
-				board1.setWriter(rs.getString("writer"));
-				board1.setContent(rs.getString("content"));
-				board1.setHit(rs.getInt("hit"));
-				board1.setWrittendate(rs.getDate("writtendate"));
-			
-				boardnoList.add(board1);
-			}
-			
 
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, board.getBoardno());
+		
+			rs = ps.executeQuery();
+						
+			if(rs.next())
+			{
+				board.setBoardno(rs.getInt("boardno"));
+				board.setTitle(rs.getString("title"));
+				board.setWriter(rs.getString("writer"));
+				board.setContent(rs.getString("content"));
+				board.setHit(rs.getInt("hit"));
+				board.setWrittendate(rs.getDate("writtendate"));
+			}
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -108,8 +104,9 @@ public class BoardDaoImpl implements BoardDao {
 				e.printStackTrace();
 			}
 		}
+
 		
-		return null;
+		return result;
 	}
 
 
