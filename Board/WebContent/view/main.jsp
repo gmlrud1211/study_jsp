@@ -31,8 +31,8 @@
 			</c:if>
 			
 			<!-- 로그인 한 상태 -->
-			<c:if test="${login }">
-				${userid }님 하이욤~<br>
+			<c:if test="${ login }">
+				${usernick }님 하이욤~<br>
 				<a href="/board/list"><button>게시판 목록보기</button></a>
 				<a href="/member/logout"><button>로그아웃</button></a>
 			</c:if>
