@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 import dbutil.DBConn;
+import dto.board.Board;
 import dto.member.Member;
 
 public class MemberDaoImpl implements MemberDao{
@@ -19,9 +20,6 @@ public class MemberDaoImpl implements MemberDao{
 	
 	@Override
 	public int selectCntMemberByUserid(Member member) {
-		HashMap <String, String> map = new HashMap<String, String>();
-		//map.put("userid", );
-		
 		
 		
 		return 0;
@@ -29,7 +27,41 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public Member selectMemberByUserid(Member member) {
-		return null;
+		
+		String sql="";
+		sql +="select * from member";
+		sql +=" where userid= ?";
+		
+		Member result = new Member();
+		
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member.getUserid());
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next())
+			{
+				member.setUserid(rs.getString("userid"));
+				member.setUserpw(rs.getString("userpw"));
+				member.setUsernick(rs.getString("usernick"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//--- 자원 해제 ---
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+				//-----------------
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	
+		return result;
 	}
 
 	@Override

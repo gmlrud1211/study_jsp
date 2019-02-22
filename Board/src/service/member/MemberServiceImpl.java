@@ -11,13 +11,9 @@ import dto.member.Member;
 public class MemberServiceImpl implements MemberService{
 
 	private MemberDao memberDao = new MemberDaoImpl();
-	
-	
-
 
 	@Override
 	public boolean login(Member member) {
-		
 		memberDao.selectCntMemberByUserid(member);
 		
 		return true;
@@ -25,7 +21,6 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public Member getMemberByUserid(Member member) {
-		
 		memberDao.selectMemberByUserid(member);
 		
 		return member;
