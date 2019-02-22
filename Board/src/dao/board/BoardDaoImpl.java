@@ -24,7 +24,7 @@ public class BoardDaoImpl implements BoardDao {
 		//sql작성
 		String sql = "";
 		sql+="select * from board";
-		sql+=" order by boardno";
+		sql+=" order by boardno desc";
 			
 		//쿼리 결과저장할 list
 		List<Board> boardList = new ArrayList<>();
@@ -112,6 +112,35 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public void updateHit(Board board) {
+		
+		String sql = "";
+		sql+="update board";
+		sql+=" set hit=hit+1";
+		sql+=" where boardno = ?";
+		
+		try {
+
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, board.getBoardno());
+			
+			ps.executeUpdate();
+		
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//--- 자원 해제 ---
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+				//-----------------
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		
+		
 		
 	}
 
