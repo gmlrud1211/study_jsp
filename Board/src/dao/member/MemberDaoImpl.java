@@ -19,18 +19,69 @@ public class MemberDaoImpl implements MemberDao{
 	
 
 	@Override
+	public int selectCntMemberByUserid(Member member) {
+		String sql = "";
+		sql+="select count(*) from member";
+		sql+=" wehre 1=1";
+		
+		if(member.getUserid()!=null && member.getUserpw()!=null) 
+		{
+			sql+="and userid =?";
+			sql+="and userpw =?";	
+		}
+			
+		int cnt = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			if(member.getUserid()!=null & member.getUserpw()!=null)
+			{
+				ps.setString(1, member.getUserid());
+				ps.setString(2, member.getUserpw());
+			}
+			rs = ps.executeQuery();
+			
+			rs.next();
+			
+			cnt = rs.getInt(1);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//--- 자원 해제 ---
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+				//-----------------
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	
+		return cnt;
+	}
+	
+
+	@Override
 	public Member selectMemberByUserid(Member member) {
 		
 		String sql="";
 		sql +="select * from member";
-		sql +=" where userid= ?";
-		
+		sql +=" where userid 1 = 1";
+		if(member.getUserid()!=null) {
+			sql+=" and userid=?";
+		}
+
 		Member result = new Member();
 		
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, member.getUserid());
+			
+			if(member.getUserid()!=null)
+				ps.setString(1, member.getUserid());
+			
 			
 			rs = ps.executeQuery();
 			
@@ -90,14 +141,6 @@ public class MemberDaoImpl implements MemberDao{
 		}
 		
 		
-	}
-	
-	
-	@Override
-	public int selectCntMemberByUserid(Member member) {
-		
-		
-		return 0;
 	}
 
 	

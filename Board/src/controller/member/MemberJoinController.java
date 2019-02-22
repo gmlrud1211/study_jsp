@@ -29,7 +29,6 @@ public class MemberJoinController extends HttpServlet {
 
 		request.getRequestDispatcher("/view/member/join.jsp").forward(request, response);
 		
-	
 	}
 
 	@Override
