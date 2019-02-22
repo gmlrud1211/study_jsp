@@ -37,6 +37,15 @@ public class LoginController extends HttpServlet {
 		boolean login = false;//로그인 인증값
 		
 		//로그인 인증 처리
+		String view = null;
+		
+		if(login) {
+			//로그인 성공했을 때 
+			request.getSession().setAttribute("login", login);
+			request.getSession().setAttribute("userid", id);
+			
+			view = "/main";
+		}
 		
 		
 		

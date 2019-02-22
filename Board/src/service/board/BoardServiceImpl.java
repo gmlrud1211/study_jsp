@@ -33,7 +33,6 @@ public class BoardServiceImpl implements BoardService{
 		Board board = new Board();
 		
 		board.setBoardno(Integer.parseInt(boardno));
-
 	
 		return board;
 	}
