@@ -33,7 +33,7 @@
 				<th>글 제목</th>
 				<th>아이디</th>
 				<th>작성일</th>			
-				<%--  <th>조회수</th> --%>
+				<th>조회수</th>
 			</tr>
 		
 		<% Board b = (Board) request.getAttribute("view");%>
@@ -43,13 +43,12 @@
 				<td><%=b.getTitle() %></td>
 				<td><%=b.getWriter() %></td>
 				<td><%=b.getWrittendate() %></td>
+				<td><%=b.getHit() %></td>
 			</tr>
 			<tr >
-				<td colspan="4" height ="200px"><%=b.getContent() %> </td>
+				<td colspan="5" height ="200px"><%=b.getContent() %> </td>
 			</tr>			
 			
-			<%-- 	<%=b.getHit() %>
- --%>		
 		</table>
 	</body>
 </html>
