@@ -18,4 +18,5 @@ CREATE TABLE board (
 DROP SEQUENCE board_seq;
 CREATE SEQUENCE board_seq;
 
-SELECT * FROM board;
+SELECT * FROM board
+order by boardno;

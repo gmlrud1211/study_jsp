@@ -14,27 +14,30 @@
 		h2 {
 			text-align: center;			
 		}
+		div {
+			text-align : center;
+		}
 		</style>
 		
 	</head>
 	<body>
 		<h2>메인 페이지</h2>
 		<hr>
-		
-		<!-- 로그인 안한 상태 -->
-		<c:if test="${not login }">
-			<a href="/member/join"><button>회원가입</button></a>
-			<a href="/member/login"><button>로그인</button></a>
-		</c:if>
-		
-		<!-- 로그인 한 상태 -->
-		<c:if test="${login }">
-			${userid }님 하이욤~<br>
-			<a href="/board/list"><button>게시판 목록보기</button></a>
-			<a href="/member/logout"><button>로그아웃</button></a>
-		</c:if>
-		
-				
+		<div>
+			<!-- 로그인 안한 상태 -->
+			<c:if test="${not login }">
+				<a href="/member/join"><button>회원가입</button></a>
+				<a href="/member/login"><button>로그인</button></a>
+			</c:if>
+			
+			<!-- 로그인 한 상태 -->
+			<c:if test="${login }">
+				${userid }님 하이욤~<br>
+				<a href="/board/list"><button>게시판 목록보기</button></a>
+				<a href="/member/logout"><button>로그아웃</button></a>
+			</c:if>
+			
+		</div>		
 	
 	</body>
 </html>

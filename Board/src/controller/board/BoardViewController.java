@@ -26,13 +26,16 @@ public class BoardViewController extends HttpServlet {
 		//한글 처리 인코딩 설정 (UTF-8)
 		request.setCharacterEncoding("utf-8");
 		
-		//서비스 처리
+		//서비스 처리 (요청파라미터를 모델로 전달)
 		Board board = boardService.getParam(request, response);
 				
+		//게시글 조회
 		Board view = boardService.view(board);
 		
+		//Model 전달
 		request.setAttribute("view", view);
 		
+		//view 지정
 		RequestDispatcher rd;
 		rd= request.getRequestDispatcher("/view/board/view.jsp");
 		rd.forward(request, response);

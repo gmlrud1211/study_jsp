@@ -37,10 +37,10 @@ public class BoardDaoImpl implements BoardDao {
 			rs = ps.executeQuery();
 			
 			//결과처리
-			
 			while(rs.next())
 			{
 				Board board = new Board();
+				//ResultSet의 결과 행이 DTO에 하나씩 저장됨
 				board.setBoardno(rs.getInt("boardno"));
 				board.setTitle(rs.getString("title"));
 				board.setWriter(rs.getString("writer"));
@@ -69,6 +69,7 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public Board selectBoardByBoardno(Board board) {
 		
+		//조회쿼리
 		String sql ="";
 		sql +="select * from board";
 		sql +=" where boardno=?";
@@ -116,8 +117,8 @@ public class BoardDaoImpl implements BoardDao {
 		String sql = "";
 		sql+="update board";
 		sql+=" set hit=hit+1";
-		sql+=" where boardno = ?";
-		
+		sql+=" where boardno=?";
+
 		try {
 
 			ps = conn.prepareStatement(sql);
