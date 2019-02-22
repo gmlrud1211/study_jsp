@@ -11,12 +11,12 @@
 		<hr>
 			<form action="/member/login" method="post">
 				
-				<label for="userId">아이디 : </label>
-				<input type = "text" name = "userId" id="userId" size="10" placeholder="아이디 입력"/>
+				<label for="userid">아이디 : </label>
+				<input type = "text" name = "userid" id="userid" size="10" placeholder="아이디 입력"/>
 				<br><br>
 				
-				<label for="userPw">패스워드 : </label>
-				<input type="password" id ="userPw" name="userPw" placeholder="패스워드"/>
+				<label for="userpw">패스워드 : </label>
+				<input type="password" id ="userpw" name="userpw" placeholder="패스워드"/>
 				<br><br>
 				
 				<input type="submit" value="로그인"/>

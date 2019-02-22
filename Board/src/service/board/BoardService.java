@@ -14,5 +14,4 @@ public interface BoardService {
 
 	public Board getParam(HttpServletRequest req, HttpServletResponse resp);
 	
-	
 }

@@ -1,7 +1,5 @@
 package service.board;
 
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
