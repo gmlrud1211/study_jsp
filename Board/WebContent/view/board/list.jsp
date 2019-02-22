@@ -33,8 +33,8 @@
 				<th>글 번호</th>
 				<th>글 제목</th>
 				<th>아이디</th>
-				<th>작성일</th>
 				<th>조회수</th>			
+				<th>작성일</th>
 			</tr>
 		
 	<%	List <Board> boardList = (List) request.getAttribute("boardList");
