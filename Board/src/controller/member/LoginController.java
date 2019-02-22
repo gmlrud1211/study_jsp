@@ -19,9 +19,7 @@ import service.member.MemberServiceImpl;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	private MemberService memberservice = new MemberServiceImpl();
-
+	private MemberService memberService = new MemberServiceImpl();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -34,39 +32,17 @@ public class LoginController extends HttpServlet {
 		//한글 인코딩
 		request.setCharacterEncoding("utf-8");
 		
-		//세션객체 얻기(생성)
-		HttpSession session = request.getSession(true); //세션이 없으면 새로생성 있으면 이전거 불러옴
-				
-		
 		//요청 파라미터 처리
-		String id = request.getParameter("userid");
-		String pw = request.getParameter("userpw");
+		Member member = memberService.getParam(request, response);
 		
-		boolean login = false;//로그인 인증값
-		
-		//멤버 서비스 처리
-		Member member = memberservice.getParam(request, response);
-		
-		Member view = memberservice.getMemberByUserid(member);
-		
-		request.setAttribute("view", view);
-				
-		//로그인 인증 처리
-		if( id!=null&&view.getUserid().equals(id)
-				&& pw!=null&&view.getUserpw().equals(pw) ) {
-			login = true;
-		}
-				
-		if(login) {
-			//로그인 성공했을 때 
-			request.getSession().setAttribute("login", login);
-			request.getSession().setAttribute("userid", id);
-		
-			response.sendRedirect("/main");	
-			return;
-		}
-		
-		request.getRequestDispatcher("/main").forward(request, response);
+		boolean login = memberService.login(member); //로그인 인증
+
+		//정보 저장
+		request.getSession().setAttribute("login", login);
+		request.getSession().setAttribute("writer", member.getUserid());
+		request.getSession().setAttribute("nick", member.getUsernick());
+
+		response.sendRedirect("/main");	
 			
 	
 	}

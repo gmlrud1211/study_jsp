@@ -1,6 +1,5 @@
 package service.member;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,17 +12,40 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao memberDao = new MemberDaoImpl();
 
 	@Override
-	public boolean login(Member member) {
-		memberDao.selectCntMemberByUserid(member);
+	public Member getParam(HttpServletRequest req, HttpServletResponse resp) {
+	
+		Member member = new Member();
 		
-		return true;
+		String userid = (String)req.getParameter("userid");
+		String userpw = (String)req.getParameter("userpw");
+		String usernick = (String)req.getParameter("usernick");
+		
+		member.setUserid(userid);
+		member.setUserpw(userpw);
+		member.setUsernick(usernick);
+				
+		return member;
+	}	
+	
+	@Override
+	public boolean login(Member member) {
+		
+		//memberDao.selectCntMemberByUserid(member);
+
+		if(memberDao.selectCntMemberByUserid(member)==1) {
+			//로그인 성공 (1)
+			return true;
+		}else {
+			//실패
+			return false;
+		}
+		
 	}
 
 	@Override
 	public Member getMemberByUserid(Member member) {
-		memberDao.selectMemberByUserid(member);
 		
-		return member;
+		return memberDao.selectMemberByUserid(member);
 	}
 
 	@Override
@@ -31,16 +53,5 @@ public class MemberServiceImpl implements MemberService{
 		memberDao.insert(member);
 	}
 	
-	@Override
-	public Member getParam(HttpServletRequest req, HttpServletResponse resp) {
 	
-		String userid = (String)req.getParameter("userid");
-		
-		Member member = new Member();
-		member.setUserid(userid);
-		
-		return member;
-	}
-	
-
 }

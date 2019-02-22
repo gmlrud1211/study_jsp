@@ -20,7 +20,6 @@ import service.member.MemberServiceImpl;
 public class MemberJoinController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private MemberDao memberDao = new MemberDaoImpl();
 	
 	private MemberService memberService = new MemberServiceImpl();
 
@@ -36,22 +35,13 @@ public class MemberJoinController extends HttpServlet {
 			
 		//한글 인코딩
 		req.setCharacterEncoding("utf-8");
-		
-		String userid = req.getParameter("userid");
-		System.out.println(userid);
-		String userpw = req.getParameter("userpw");
-		System.out.println(userpw);
-		String usernick = req.getParameter("usernick");
-		System.out.println(usernick);
 	
-		Member member = new Member();
+		//요청 파라미터
+		Member member = memberService.getParam(req, resp);
 		
-		member.setUserid(userid);
-		member.setUserpw(userpw);
-		member.setUsernick(usernick);
-		
-		memberDao.insert(member);
-		
+		//회원가입
+		memberService.join(member);
+			
 		
 		resp.sendRedirect("/main");
 		
