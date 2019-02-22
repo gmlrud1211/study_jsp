@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import dbutil.DBConn;
 import dto.member.Member;
@@ -18,6 +19,8 @@ public class MemberDaoImpl implements MemberDao{
 	
 	@Override
 	public int selectCntMemberByUserid(Member member) {
+		HashMap <String, String> map = new HashMap<String, String>();
+		//map.put("userid", );
 		
 		
 		

@@ -14,9 +14,15 @@
 		<hr>
 		
 		<!-- 로그인 안한 상태 -->
-		<c:if test="">
+		<c:if test="${not login }">
 			<a href="/member/join"><button>회원가입</button></a>
 			<a href="/member/login"><button>로그인</button></a>
+		</c:if>
+		
+		<!-- 로그인 한 상태 -->
+		<c:if test="${login }">
+			<a href="/board/list"><button>게시판 목록보기</button></a>
+			<a href="/member/logout"><button>로그아웃</button></a>
 		</c:if>
 		
 				
