@@ -15,7 +15,7 @@
 		</style>
 	</head>
 	<body>
-		<h2>로그인 정보 입력 form</h2>
+		<h2>로그인 페이지</h2>
 		<hr>
 			<form action="/member/login" method="post">
 				

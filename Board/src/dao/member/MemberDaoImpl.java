@@ -4,10 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 import dbutil.DBConn;
-import dto.board.Board;
 import dto.member.Member;
 
 public class MemberDaoImpl implements MemberDao{
@@ -22,19 +20,19 @@ public class MemberDaoImpl implements MemberDao{
 	public int selectCntMemberByUserid(Member member) {
 		String sql = "";
 		sql+="select count(*) from member";
-		sql+=" wehre 1=1";
+		sql+=" where 1=1";
 		
 		if(member.getUserid()!=null && member.getUserpw()!=null) 
 		{
-			sql+="and userid =?";
-			sql+="and userpw =?";	
+			sql+=" and userid =?";
+			sql+=" and userpw =?";	
 		}
 			
 		int cnt = -1;
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			if(member.getUserid()!=null & member.getUserpw()!=null)
+			if(member.getUserid()!=null && member.getUserpw()!=null)
 			{
 				ps.setString(1, member.getUserid());
 				ps.setString(2, member.getUserpw());
@@ -68,28 +66,29 @@ public class MemberDaoImpl implements MemberDao{
 		
 		String sql="";
 		sql +="select * from member";
-		sql +=" where userid 1 = 1";
+		sql +=" where 1=1";
 		if(member.getUserid()!=null) {
 			sql+=" and userid=?";
 		}
 
-		Member result = new Member();
+		Member m = new Member();
 		
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			if(member.getUserid()!=null)
+			if(member.getUserid()!=null) 
+			{
 				ps.setString(1, member.getUserid());
-			
+			}
 			
 			rs = ps.executeQuery();
 			
-			if(rs.next())
+			while(rs.next())
 			{
-				member.setUserid(rs.getString("userid"));
-				member.setUserpw(rs.getString("userpw"));
-				member.setUsernick(rs.getString("usernick"));
+				m.setUserid(rs.getString("userid"));
+				m.setUserpw(rs.getString("userpw"));
+				m.setUsernick(rs.getString("usernick"));
 			}
 		
 		} catch (SQLException e) {
@@ -105,7 +104,7 @@ public class MemberDaoImpl implements MemberDao{
 			}
 		}
 	
-		return result;
+		return m;
 	}
 
 	
