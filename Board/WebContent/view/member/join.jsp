@@ -5,6 +5,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>회원가입 페이지</title>
+		<style>
+		h2 {
+			text-align: center;			
+		}
+		
+		</style>
 	</head>
 	<body>
 		<h2>회원가입페이지</h2>

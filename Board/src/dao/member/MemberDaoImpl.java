@@ -17,13 +17,6 @@ public class MemberDaoImpl implements MemberDao{
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
-	
-	@Override
-	public int selectCntMemberByUserid(Member member) {
-		
-		
-		return 0;
-	}
 
 	@Override
 	public Member selectMemberByUserid(Member member) {
@@ -64,6 +57,7 @@ public class MemberDaoImpl implements MemberDao{
 		return result;
 	}
 
+	
 	@Override
 	public void insert(Member member) {
 		
@@ -96,8 +90,16 @@ public class MemberDaoImpl implements MemberDao{
 		}
 		
 		
-		
-		
 	}
+	
+	
+	@Override
+	public int selectCntMemberByUserid(Member member) {
+		
+		
+		return 0;
+	}
+
+	
 
 }

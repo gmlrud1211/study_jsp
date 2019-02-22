@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
 		String id = request.getParameter("userid");
 		String pw = request.getParameter("userpw");
 		
-		boolean login = true;//로그인 인증값
+		boolean login = false;//로그인 인증값
 		
 		//멤버 서비스 처리
 		Member member = memberservice.getParam(request, response);
@@ -50,28 +50,24 @@ public class LoginController extends HttpServlet {
 		Member view = memberservice.getMemberByUserid(member);
 		
 		request.setAttribute("view", view);
-		
+				
 		//로그인 인증 처리
-		
+		if( id!=null&&view.getUserid().equals(id)
+				&& pw!=null&&view.getUserpw().equals(pw) ) {
+			login = true;
+		}
+				
 		if(login) {
 			//로그인 성공했을 때 
 			request.getSession().setAttribute("login", login);
 			request.getSession().setAttribute("userid", id);
 		
 			response.sendRedirect("/main");	
-			
-		}else {
-			response.sendRedirect("/main");	
-		
+			return;
 		}
 		
-		
-		
-		
-		
-		
-		
-		
+		request.getRequestDispatcher("/main").forward(request, response);
+			
 	
 	}
 
