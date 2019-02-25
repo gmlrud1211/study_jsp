@@ -27,5 +27,8 @@ public interface BoardService {
 	
 	//페이징 리스트 얻기
 	public List getPagingList(Paging paging);
+
+	//게시글 작성
+	public Board write(Board board);
 	
 }

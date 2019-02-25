@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 조회페이지</title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -16,25 +15,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </head>
+
 <body>
 
 <div>
-<h1 class="text-center"><a href="/main">${writer}님 하이 ~!_!~</a></h1>
+	<h1 class="text-center"><a href="/main">${writer}님 하이 ~!_!~</a></h1>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

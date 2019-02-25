@@ -24,6 +24,7 @@ public class BoardPagingListController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
 		//현재 페이지 번호 얻기
 		int curPage = boardService.getCurPage(request);
 		

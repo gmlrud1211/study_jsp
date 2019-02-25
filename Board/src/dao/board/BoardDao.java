@@ -23,4 +23,7 @@ public interface BoardDao {
 	//페이징처리된 게시글 목록 조회
 	public List selectPagingList(Paging paging);
 	
+	//게시글 작성
+	public void insert(Board board);
+	
 }

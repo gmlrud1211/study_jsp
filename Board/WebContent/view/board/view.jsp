@@ -2,12 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page import="dto.board.Board" %>
 <%@ page import="dto.member.Member" %>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>게시글 조회 페이지</title>
-	</head>
+
+
+	<title>게시글 조회 페이지</title>
 	
 	<jsp:include page="../layout/header.jsp"/>
 	
@@ -28,7 +25,7 @@
 	<body>
 	
 		<hr>
-		<h2>게시글 상세조회</h2>
+		<h3>게시글 상세조회</h3>
 		<hr>
 		
 				
@@ -63,5 +60,4 @@
 			<button id="btnDelete" class="btn btn-danger">삭제</button>
 		</div>
 		
-	</body>
-</html>
+	<jsp:include page="../layout/footer.jsp"/>		

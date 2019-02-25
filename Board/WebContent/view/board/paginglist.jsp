@@ -8,10 +8,9 @@
 
 <jsp:include page="../layout/header.jsp" />
 
-<!DOCTYPE html>
-	<html>
-	<head>
 		<meta charset="UTF-8">
+		<title>게시글 목록 페이지</title>
+		
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$("table").on("click", "tr", function() {
@@ -33,7 +32,7 @@
 		}
 		</style>
 
-	</head>
+
 	<div class="container">
 
 	<hr>
@@ -70,5 +69,3 @@
 	<jsp:include page="../layout/paging.jsp"/>
 		
 	<jsp:include page="../layout/footer.jsp"/>		
-
-</html>

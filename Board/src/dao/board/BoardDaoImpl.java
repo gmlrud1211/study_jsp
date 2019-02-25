@@ -141,9 +141,6 @@ public class BoardDaoImpl implements BoardDao {
 			}
 		}
 
-		
-		
-		
 	}
 
 	@Override
@@ -237,6 +234,38 @@ public class BoardDaoImpl implements BoardDao {
 		}
 			return boardList;
 		
+	}
+
+	@Override
+	public void insert(Board board) {
+		String sql = "";
+		sql+="insert into board(boardno,title,writer,content,hit)";
+		sql+=" values(?, ?, ?, ?,0)";
+
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, board.getBoardno());
+			ps.setString(1, board.getTitle());
+			ps.setString(2, board.getWriter());
+			ps.setString(3, board.getContent());
+			
+			ps.executeUpdate();
+		
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//--- 자원 해제 ---
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+				//-----------------
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	
 	}
 	
 }/*
