@@ -57,8 +57,7 @@
 				<div class="col-sm-5">
 					<textarea name="content" cols="60" rows="10" class="form-control"></textarea>
 				</div>
-			</div>
-				
+			</div>			
 			
 			
 			<div class="col-sm-offset-4">

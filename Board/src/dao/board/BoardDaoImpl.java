@@ -240,7 +240,7 @@ public class BoardDaoImpl implements BoardDao {
 	public void insert(Board board) {
 		String sql = "";
 		sql+="insert into board(boardno,title,writer,content,hit)";
-		sql+=" values(?, ?, ?, ?,0)";
+		sql+=" values(?, ?, ?, ?, 0)";
 
 		try {
 			ps = conn.prepareStatement(sql);

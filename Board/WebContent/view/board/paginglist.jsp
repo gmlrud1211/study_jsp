@@ -19,6 +19,9 @@
 				
 				$(location).attr("href","/board/view?boardno="+boardno);
 			});
+			$("#btnRegister").click(function() {
+				$(location).attr("href", "/board/write");
+			});
 		});
 		</script>
 		
@@ -38,7 +41,11 @@
 	<hr>
 	<h3>게시글 목록</h3>
 	<hr>
-	
+
+	<div class="text-center">	
+			<button id="btnRegister" class="btn btn-primary">글 작성</button>
+	</div>
+
 	<table class="table table-hover table-striped table-condensed">
 	<thead>
 		<tr>
