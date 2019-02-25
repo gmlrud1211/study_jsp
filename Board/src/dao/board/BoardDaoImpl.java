@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dbutil.DBConn;
+import dbutil.Paging;
 import dto.board.Board;
 
 public class BoardDaoImpl implements BoardDao {
@@ -180,5 +181,64 @@ public class BoardDaoImpl implements BoardDao {
 		//전체 게시글 수 반환
 		return cnt;
 	}
+
+	@Override
+	public List selectPagingList(Paging paging) {
+		
+		//sql작성
+		String sql = "";
+		sql+="select * from (";
+		sql+=" select rownum rnum, B.* from(";
+		sql+=" select * from board ";
+		sql+=" order by boardno desc";
+		sql+=" ) B";
+		sql+=" order by rnum";
+		sql+=" ) R";
+		sql+=" where rnum between ? and ?";
+
+		
+		//쿼리 결과저장할 list
+		List<Board> boardList = new ArrayList<>();
+				
+				
+		try {
+			//sql 수행
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, paging.getStartNo());
+			ps.setInt(2, paging.getEndNo());
+			rs = ps.executeQuery();
+					
+			//결과처리
+			while(rs.next())
+			{
+				Board board = new Board();
+				
+				board.setBoardno(rs.getInt("boardno"));
+				board.setTitle(rs.getString("title"));
+				board.setWriter(rs.getString("writer"));
+				board.setContent(rs.getString("content"));
+				board.setHit(rs.getInt("hit"));
+				board.setWrittendate(rs.getDate("writtendate"));
+					
+				boardList.add(board);
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//--- 자원 해제 ---
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+				//-----------------
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			return boardList;
+		
+	}
 	
-}
+}/*
+
+*/

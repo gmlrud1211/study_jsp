@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dbutil.Paging;
 import dto.board.Board;
 
 public interface BoardService {
@@ -23,5 +24,8 @@ public interface BoardService {
 	
 	//총 게시글 수 얻기
 	public int getTotalCount();
+	
+	//페이징 리스트 얻기
+	public List getPagingList(Paging paging);
 	
 }

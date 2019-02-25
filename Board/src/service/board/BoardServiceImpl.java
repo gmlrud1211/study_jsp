@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.board.BoardDao;
 import dao.board.BoardDaoImpl;
+import dbutil.Paging;
 import dto.board.Board;
 
 public class BoardServiceImpl implements BoardService{
@@ -70,6 +71,13 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int getTotalCount() {
 		return boardDao.selectCntBoard();
+	}
+
+
+	@Override
+	public List getPagingList(Paging paging) {
+			
+		return boardDao.selectPagingList(paging);
 	}
 
 

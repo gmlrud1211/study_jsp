@@ -2,6 +2,7 @@ package dao.board;
 
 import java.util.List;
 
+import dbutil.Paging;
 import dto.board.Board;
 
 public interface BoardDao {
@@ -18,5 +19,8 @@ public interface BoardDao {
 	
 	//총 게시글 수 반환
 	public int selectCntBoard();
+
+	//페이징처리된 게시글 목록 조회
+	public List selectPagingList(Paging paging);
 	
 }
