@@ -39,9 +39,13 @@ public class BoardPagingListController extends HttpServlet {
 		List<Board> boardList = boardService.getPagingList(paging);
 		request.setAttribute("boardList", boardList);
 		
+		//페이징 객체 model로 추가
+		request.setAttribute("paging", paging);
+		
+		
 		//view 지정
 		RequestDispatcher rd;
-		rd= request.getRequestDispatcher("/view/board/list.jsp");
+		rd= request.getRequestDispatcher("/view/board/paginglist.jsp");
 		rd.forward(request, response);
 		
 		
