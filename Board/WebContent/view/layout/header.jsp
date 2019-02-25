@@ -19,7 +19,7 @@
 <body>
 
 <div>
-<h1 class="text-center"><a href="/board/paginglist">${writer}님 하이 ~!_!~</a></h1>
+<h1 class="text-center"><a href="/main">${writer}님 하이 ~!_!~</a></h1>
 </div>
 
 

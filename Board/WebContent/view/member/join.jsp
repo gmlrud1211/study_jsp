@@ -5,39 +5,57 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>회원가입 페이지</title>
-		<style>
-		h2 {
-			text-align: center;			
-		}
-		form {
-			text-align:center;
-		}
-		
-		</style>
+		<jsp:include page="/view/layout/header.jsp" />
+				
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("input").eq(0).focus();
+			
+			$("#btnJoin").click(function() {
+				$(this).parents("form").submit();
+			})
+			
+			$("#btnCancel").click(function() {
+				history.go(-1);
+			})
+		});
+		</script>
+				
 	</head>
-	<body>
-		<h2>회원가입페이지</h2>
+		
+	<div class="container">
+		<h3>회원가입페이지</h3>
 		<hr>
-		
-		<form action="/member/join" method="post">
-				
-				<label for="userid">아이디 : </label>
-				<input type = "text" name = "userid" id="userid" size="10" placeholder="아이디 입력"/>
-				<br><br>
-				
-				<label for="userpw">패스워드 : </label>
-				<input type="password" id ="userpw" name="userpw" placeholder="패스워드 입력"/>
-				<br><br>
-				
-				<label for="usernick">닉네임 : </label>
-				<input type="text" id ="usernick" name="usernick" placeholder="닉네임 입력"/>
-				<br><br>
+		<div>
+			<form action="/member/join" method="post" class="form-horizontal">
 					
-				<input type="submit" value="회원가입" />
-				
-		</form>
-		
-		
-		
-	</body>
+					<div class="form-group">
+						<label for="userid" class="col-sm-3 col-sm-offset-1 control-label">아이디</label>
+						<div class="col-sm-5">
+							<input type="text" id="userid" name="userid" class="form-control"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="userpw" class="col-sm-3 col-sm-offset-1 control-label">패스워드</label>
+						<div class="col-sm-5">
+						<input type="password" id="userpw" name="userpw" class="form-control"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="usernick" class="col-sm-3 col-sm-offset-1 control-label">닉네임</label>
+						<div class="col-sm-5">
+						<input type="text" id="usernick" name="usernick" class="form-control"/>
+						</div>
+					</div>
+					
+					<div class="col-sm-offset-4">
+						<button type="button" id="btnJoin" class="btn btn-primary">가입</button>
+						<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
+					</div>
+					
+			</form>
+		</div>
+	</div>	
 </html>
