@@ -12,7 +12,6 @@
 	<html>
 	<head>
 		<meta charset="UTF-8">
-		<title>게시판 리스트 조회</title>
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$("table").on("click", "tr", function() {
