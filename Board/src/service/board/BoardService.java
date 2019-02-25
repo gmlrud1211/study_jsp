@@ -17,5 +17,11 @@ public interface BoardService {
 	
 	//요청파라미터 데이터를 객체화해서 반환
 	public Board getParam(HttpServletRequest req, HttpServletResponse resp);
+
+	//요청 파라미터에서 curPage반환
+	public int getCurPage(HttpServletRequest req);
+	
+	//총 게시글 수 얻기
+	public int getTotalCount();
 	
 }

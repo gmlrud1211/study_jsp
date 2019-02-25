@@ -46,7 +46,6 @@
 			<td><h4><%=boardList.get(i).getWriter() %></h4></td>
 			<td><h4><%=boardList.get(i).getHit() %></h4></td>
 			<td><h4><%=boardList.get(i).getWrittendate() %></h4></td>
-	
 	<%	} %>
 			
 		

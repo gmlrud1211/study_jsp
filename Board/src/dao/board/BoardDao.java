@@ -16,4 +16,7 @@ public interface BoardDao {
 	//추천수 hit+1
 	public void updateHit(Board board);
 	
+	//총 게시글 수 반환
+	public int selectCntBoard();
+	
 }

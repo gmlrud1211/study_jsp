@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.board.BoardDao;
 import dao.board.BoardDaoImpl;
+import dbutil.Paging;
 import dto.board.Board;
 import service.board.BoardService;
 import service.board.BoardServiceImpl;
@@ -30,23 +31,14 @@ public class BoardListController extends HttpServlet {
 		//view에 전달
 		request.setAttribute("boardList", boardList);
 		
-		
+		//view 지정
 		RequestDispatcher rd;
 		rd= request.getRequestDispatcher("/view/board/list.jsp");
 		rd.forward(request, response);
+	
 		
-		
-		
-		
+	
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		req.setCharacterEncoding("utf-8");
-		
-
-		
-	}
 
 }

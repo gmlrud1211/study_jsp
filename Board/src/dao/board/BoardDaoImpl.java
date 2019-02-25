@@ -117,7 +117,7 @@ public class BoardDaoImpl implements BoardDao {
 		String sql = "";
 		sql+="update board";
 		sql+=" set hit=hit+1";
-		sql+=" where boardno=?";
+		sql+=" where boardno= ?";
 
 		try {
 
@@ -145,8 +145,40 @@ public class BoardDaoImpl implements BoardDao {
 		
 	}
 
+	@Override
+	public int selectCntBoard() {
 
-	
-
+		//sql작성
+		String sql = "";
+		sql+="select count(*) from board";
+			
+		//쿼리 결과저장할 변수
+		int cnt = 0;
+		
+		try {
+			//sql 수행
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			//결과처리
+			rs.next();
+			cnt = rs.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//--- 자원 해제 ---
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+				//-----------------
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//전체 게시글 수 반환
+		return cnt;
+	}
 	
 }
