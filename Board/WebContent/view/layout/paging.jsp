@@ -14,7 +14,7 @@
 			</c:if>	
 		</li>
 		<!-- 이전 페이지 그룹 -->
-		<c:if test="${paging.curPage le paging.endPage }">
+		<c:if test="${paging.curPage le paging.pageCount }">
 			<li class="disabled"><span>&laquo;&laquo;</span></li>
 		</c:if>
 		<c:if test="${paging.curPage gt paging.pageCount }">
@@ -37,7 +37,7 @@
 				<li class="active"><a href="/board/paginglist?curPage=${i }">${i }</a>		
 			</c:if>
 			<c:if test="${paging.curPage ne i }">
-					<li><a href="/board/paginglist?curPage=${i }">${i }</a>	
+				<li><a href="/board/paginglist?curPage=${i }">${i }</a>	
 			</c:if>
 			
 		</c:forEach>
