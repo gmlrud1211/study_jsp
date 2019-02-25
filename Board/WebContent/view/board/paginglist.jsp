@@ -6,50 +6,54 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<!-- 부트스트랩 3.3.2 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<jsp:include page="../layout/header.jsp" />
 
 <!DOCTYPE html>
 	<html>
 	<head>
 		<meta charset="UTF-8">
 		<title>게시판 리스트 조회</title>
-		<style>
-		h2 {
-			text-align: center;			
-		}
-		table {
-			border-collapse : collapse;
-			width:60%;
-			margin : auto;
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("table").on("click", "tr", function() {
+				//클릭이벤트가 발생한 <tr>의 첫번째 <td>자식의 텍스트
+				var boardno = $(this).children("td").eq(0).text();
+				
+				$(location).attr("href","/board/view?boardno="+boardno);
+			});
+		});
+		</script>
+		
+		<style type="text/css">
+		th, td:not(:nth-child(2)) {
 			text-align: center;
 		}
-		th, td {
-			padding : 4px;
-			border : 1px solid #ccc;
+		td {
+			border-left: 1px solid white;
+			border-right: 1px solid white;
 		}
 		</style>
+
 	</head>
-	<body>
-		<h2>게시판목록</h2>
-		<hr>
-		<table border="1">
-			<tr>
-				<th>글 번호</th>
-				<th>글 제목</th>
-				<th>아이디</th>
-				<th>조회수</th>			
-				<th>작성일</th>
-			</tr>
-		
-				
-		<tbody>
-			<c:forEach items="${boardList }" var="board">
+	<div class="container">
+
+	<hr>
+	<h3>게시글 목록</h3>
+	<hr>
+	
+	<table class="table table-hover table-striped table-condensed">
+	<thead>
+		<tr>
+			<th style="width: 10%">번호</th>
+			<th style="width: 45%">제목</th>
+			<th style="width: 20%">작성자</th>
+			<th style="width: 10%">조회수</th>
+			<th style="width: 20%">작성일</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<c:forEach items="${boardList }" var="board">
 			<tr>
 				<td>${board.boardno }</td>
 				<td><a href="/board/view?boardno=${board.boardno }">${board.title }</a></td>
@@ -57,17 +61,16 @@
 				<td>${board.hit }</td>
 				<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td>
 			</tr>
-			</c:forEach>
-		</tbody>
+		</c:forEach>
+	</tbody>
+	
+	</table>
+	
+	</div>
+	
+	<jsp:include page="../layout/paging.jsp"/>
+	
+	
+	<jsp:include page="../layout/footer.jsp"/>		
 
-		
-		</table>
-		<br>
-		
-		<jsp:include page="../layout/paging.jsp"/>
-
-			
-		<jsp:include page="../layout/footer.jsp"/>		
-
-	</body>
 </html>

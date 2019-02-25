@@ -22,6 +22,11 @@
 		<li>
 			<a href="/board/paginglist?curPage=${paging.curPage-1 }">&lt;</a>
 		</li>
+		
+		<!-- 페이징 리스트  -->
+		<c:forEach begin ="${paging.startPage }" end="${paging.endPage }" var="i">
+			<li><a href="/board/paginglist?curPage=${i }">${i }</a>		
+		</c:forEach>
 
 		<!-- 다음 페이지 -->
 		<li>
