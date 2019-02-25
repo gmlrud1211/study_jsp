@@ -32,7 +32,6 @@ public class BoardPagingListController extends HttpServlet {
 		
 		//페이지 객체 생성
 		Paging paging = new Paging(totalCount, curPage);
-		System.out.println(paging);
 		
 		//게시글 목록 MODEL로 추가
 	//	List<Board> boardList = boardService.getList(); //걍 board/list 일때 전체조회할때 사용햇음

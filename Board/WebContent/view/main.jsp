@@ -34,7 +34,7 @@
 			<!-- 로그인 한 상태 -->
 			<c:if test="${ login }">
 				${ writer }님 하이욤~_~<br><br>
-				<a href="/board/list"><button>게시판 목록보기</button></a>
+				<a href="/board/paginglist"><button>게시판 목록보기</button></a>
 				<a href="/member/logout"><button>로그아웃</button></a>
 			</c:if>
 			

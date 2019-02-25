@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="dto.member.Member" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 조회페이지</title>
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -18,7 +19,7 @@
 <body>
 
 <div>
-<h1 class="text-center"><a href="/board/list">~!_!~</a></h1>
+<h1 class="text-center"><a href="/board/list">${writer}님 하이 ~!_!~</a></h1>
 </div>
 
 

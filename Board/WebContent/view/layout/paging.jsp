@@ -14,29 +14,50 @@
 			</c:if>	
 		</li>
 		<!-- 이전 페이지 그룹 -->
-		<li>
-			<a href="/board/paginglist?curPage=${paging.startPage-paging.pageCount }">&lt;&lt;</a>
-		</li>
+		<c:if test="${paging.curPage le paging.endPage }">
+			<li class="disabled"><span>&laquo;&laquo;</span></li>
+		</c:if>
+		<c:if test="${paging.curPage gt paging.pageCount }">
+			<li><a href="/board/paginglist?curPage=${paging.startPage-paging.pageCount }">&laquo;&laquo;</a></li>
+		</c:if>
 		
 		<!-- 이전 페이지 -->
-		<li>
-			<a href="/board/paginglist?curPage=${paging.curPage-1 }">&lt;</a>
-		</li>
+		<c:if test="${paging.curPage eq 1 }">
+		<li class="disabled"><span>&laquo;</span></li>
+		</c:if>
+		
+		<c:if test="${paging.curPage ne 1 }">
+			<li><a href="/board/paginglist?curPage=${paging.curPage-1 }">&laquo;</a></li>
+		</c:if>
 		
 		<!-- 페이징 리스트  -->
 		<c:forEach begin ="${paging.startPage }" end="${paging.endPage }" var="i">
-			<li><a href="/board/paginglist?curPage=${i }">${i }</a>		
+			
+			<c:if test="${paging.curPage eq i }">		
+				<li class="active"><a href="/board/paginglist?curPage=${i }">${i }</a>		
+			</c:if>
+			<c:if test="${paging.curPage ne i }">
+					<li><a href="/board/paginglist?curPage=${i }">${i }</a>	
+			</c:if>
+			
 		</c:forEach>
 
 		<!-- 다음 페이지 -->
-		<li>
-			<a href="/board/paginglist?curPage=${paging.curPage+1 }">&gt;</a>
-		</li>
+		<c:if test="${paging.curPage eq paging.totalPage}">
+			<li class="disabled"><span>&raquo;</span></li>
+		</c:if>	
+		<c:if test="${paging.curPage ne paging.totalPage}">
+			<li><a href="/board/paginglist?curPage=${paging.curPage+1 }">&raquo;</a></li>
+		</c:if>	
 		
 		<!-- 다음 페이지 그룹 -->
-		<li>
-			<a href="/board/paginglist?curPage=${paging.startPage+paging.pageCount }">&gt;&gt;</a>
-		</li>
+		<c:if test="${paging.endPage eq paging.totalPage }">
+			<li class="disabled"><span>&raquo;&raquo;</span></li>
+		</c:if>
+	
+		<c:if test="${paging.endPage ne paging.totalPage }">
+			<li><a href="/board/paginglist?curPage=${paging.startPage+paging.pageCount }">&raquo;&raquo;</a></li>
+		</c:if>
 		
 
 

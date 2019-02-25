@@ -69,8 +69,7 @@
 	</div>
 	
 	<jsp:include page="../layout/paging.jsp"/>
-	
-	
+		
 	<jsp:include page="../layout/footer.jsp"/>		
 
 </html>

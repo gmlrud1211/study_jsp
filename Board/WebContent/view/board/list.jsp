@@ -3,6 +3,7 @@
 <%@ page import="dto.board.Board" %>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 	<html>
@@ -28,30 +29,30 @@
 	<body>
 		<h2>게시판목록</h2>
 		<hr>
-		<table border="1">
+		<table>
+		<thead>
 			<tr>
-				<th>글 번호</th>
-				<th>글 제목</th>
-				<th>아이디</th>
-				<th>조회수</th>			
-				<th>작성일</th>
+				<th style="width: 10%">번호</th>
+				<th style="width: 45%">제목</th>
+				<th style="width: 20%">작성자</th>
+				<th style="width: 10%">조회수</th>
+				<th style="width: 20%">작성일</th>
 			</tr>
+		</thead>
 		
-	<%	List <Board> boardList = (List) request.getAttribute("boardList");
+		<tbody>
+			<c:forEach items="${boardList }" var="board">
+				<tr>
+					<td>${board.boardno }</td>
+					<td><a href="/board/view?boardno=${board.boardno }">${board.title }</a></td>
+					<td>${board.writer }</td>
+					<td>${board.hit }</td>
+					<td><fmt:formatDate value="${board.writtendate }" pattern="yyyy-MM-dd"/></td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	
-		for(int i=0; i<boardList.size(); i++) {  %>
-		<tr>	
-			<td><h4><%=boardList.get(i).getBoardno() %></h4></td>
-			<td><a href="/board/view?boardno=<%=boardList.get(i).getBoardno() %>"><h4><%=boardList.get(i).getTitle() %></h344></a></td>
-			<td><h4><%=boardList.get(i).getWriter() %></h4></td>
-			<td><h4><%=boardList.get(i).getHit() %></h4></td>
-			<td><h4><%=boardList.get(i).getWrittendate() %></h4></td>
-	<%	} %>
-			
-		
 		</table>
-		
-		
 
 
 		
