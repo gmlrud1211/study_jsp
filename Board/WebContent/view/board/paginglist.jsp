@@ -19,19 +19,28 @@
 				
 				$(location).attr("href","/board/view?boardno="+boardno);
 			});
-			$("#btnRegister").click(function() {
-				$(location).attr("href", "/board/write");
+			
+			//글쓰기 버튼 이벤트
+			$("#btnWrite").click(function() {
+				location.href ="/board/write";
 			});
+			
 		});
 		</script>
 		
 		<style type="text/css">
+		
 		th, td:not(:nth-child(2)) {
 			text-align: center;
 		}
 		td {
 			border-left: 1px solid white;
 			border-right: 1px solid white;
+		}
+		
+		#btnBox {
+			text-align : right;
+		
 		}
 		</style>
 
@@ -42,9 +51,6 @@
 	<h3>게시글 목록</h3>
 	<hr>
 
-	<div class="text-center">	
-			<button id="btnRegister" class="btn btn-primary">글 작성</button>
-	</div>
 
 	<table class="table table-hover table-striped table-condensed">
 	<thead>
@@ -74,5 +80,10 @@
 	</div>
 	
 	<jsp:include page="../layout/paging.jsp"/>
+
+	<div id="btnBox">
+		<button id="btnWrite" class="btn btn-primary">글쓰기</button>
+	</div>
+		
 		
 	<jsp:include page="../layout/footer.jsp"/>		

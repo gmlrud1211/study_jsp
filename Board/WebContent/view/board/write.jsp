@@ -8,7 +8,7 @@
 	
 	<jsp:include page="../layout/header.jsp"/>
 	
-	<script type="text/javascript">
+	 <script type="text/javascript">
 		$(document).ready(function() {
 			$("input").eq(0).focus();
 			
@@ -22,52 +22,34 @@
 		});
 	</script>
 	<style>
-	h3{ text-align : center;}
+	h4{ text-align : center;}
 	
 	</style>
 	
 	<div class="container">
-		<h3>게시글 작성</h3>
+		<h4>게시글 작성</h4>
 		<hr>
-		<form action="/board/write" method="post" class="form-horizontal">
-			<div class="form-group" >
-				<label for="boardno" class="col-sm-3 col-sm-offset-1 control-label">글번호</label>
-				<div class="col-sm-5">
-					<input type="text" id="boardno" name="boardno" class="form-control" value="board_seq.nextval" readonly="readonly"/>
-				</div>
-			</div>
 		
-			<div class="form-group">
-				<label for="title" class="col-sm-3 col-sm-offset-1 control-label">글제목</label>
-				<div class="col-sm-5">
-					<input type="text" id="title" name="title" class="form-control"/>
-				</div>
-			</div>
-
-			<div class="form-group" >
-				<label for="wrtier" class="col-sm-3 col-sm-offset-1 control-label">작성자</label>
-				<div class="col-sm-5">
-					<input type="text" id="writer" name="writer" class="form-control" value="${writer }" readonly="readonly"/>
-				</div>
-			</div>
-			
-				
-			<div class="form-group">
-				<label for="content" class="col-sm-3 col-sm-offset-1 control-label">글내용</label>
-				<div class="col-sm-5">
-					<textarea name="content" cols="60" rows="10" class="form-control"></textarea>
-				</div>
-			</div>			
+		<div>
+		
+			<form action="/board/write" method="post">
 			
 			
-			<div class="col-sm-offset-4">
-				<button type="button" id="btnWrite" class="btn btn-primary">등록</button>
-				<button type="button" id="btnCancel" class="btn btn-danger">취소</button>
-			</div>
+			
+			
+			</form>
+		
+		</div>
 					
-		</form>
+
+		<div class="text-center">	
+			<button id="btnList" class="btn btn-primary">목록</button>
+			<button id="btnList" class="btn btn-primary">등록</button>
+			
+		</div>
 			
 	</div>
+	
 	
 	<jsp:include page="../layout/footer.jsp"/>		
 	

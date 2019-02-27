@@ -24,6 +24,14 @@ public class BoardWriteController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//로그인 안됬으면 /main으로 리다이렉트
+		if(request.getSession().getAttribute("login")==null) {
+			response.sendRedirect("/main");
+			
+			return;
+		}
+		
+		
 		request.getRequestDispatcher("/view/board/write.jsp").forward(request, response);
 	}
 
