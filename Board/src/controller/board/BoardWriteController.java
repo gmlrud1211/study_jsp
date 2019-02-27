@@ -31,32 +31,15 @@ public class BoardWriteController extends HttpServlet {
 			return;
 		}
 		
-		
 		request.getRequestDispatcher("/view/board/write.jsp").forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		//한글 인코딩
-		req.setCharacterEncoding("utf-8");
-	
-		//요청 파라미터
-		Board board = boardService.getParam(req, resp);
-		Member member = memberService.getParam(req, resp);
+		System.out.println("[param] "+req.getParameter("title"));
+		System.out.println("[param] "+req.getParameter("content"));
 		
-		//서비스처리
-		Board write = boardService.write(board);
 		
-		req.setAttribute("write", write);
-		
-		req.getSession().setAttribute("writer", member.getUserid());
-		req.getSession().setAttribute("nick", member.getUsernick());
-		
-		System.out.println(member.getUserid());
-		System.out.println(member.getUsernick());
-		
-		resp.sendRedirect("/board/paginglist");	
 	}
 	
 	
