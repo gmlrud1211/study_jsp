@@ -53,6 +53,8 @@ public class BoardWriteController extends HttpServlet {
 		req.getSession().setAttribute("writer", member.getUserid());
 		req.getSession().setAttribute("nick", member.getUsernick());
 		
+		System.out.println(member.getUserid());
+		System.out.println(member.getUsernick());
 		
 		resp.sendRedirect("/board/paginglist");	
 	}
