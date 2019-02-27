@@ -18,10 +18,6 @@ import service.member.MemberServiceImpl;
 public class BoardWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private MemberService memberService = new MemberServiceImpl();
-	
-	private BoardService boardService = new BoardServiceImpl();
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//로그인 안됬으면 /main으로 리다이렉트
