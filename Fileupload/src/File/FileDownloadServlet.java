@@ -114,9 +114,12 @@ public class FileDownloadServlet extends HttpServlet {
 			os.close();
 			is.close();
 			
+			//----------------------------
+			return;
+			
 		}
-		
-		
+		resp.setContentType("text/html;charset=utf-8"); 
+		resp.getWriter().println("파일이 존재하지 않습니다.");		
 
 	}
 
