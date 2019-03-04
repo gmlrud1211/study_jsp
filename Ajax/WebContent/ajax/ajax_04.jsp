@@ -42,7 +42,7 @@
 			//결과가 반영될 div
 			var layout = result;
 			//결과 반영
-			layout.innerHTML = res;
+			layout.innerHTML += res;
 		}
 		
 		
