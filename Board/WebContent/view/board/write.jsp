@@ -30,7 +30,7 @@
 	<style>
 	h4{ text-align : center; }
 	
-	#content { width :100% }
+	#content { width :99.5% }
 	
 	</style>
 	
